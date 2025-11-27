@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boneless Chicken Dex - Add Chicken</title>
+  <link rel="stylesheet" href="../01_CSS/style.css" />
+  <script src="chicken_add.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="auth.html">Auth</a></li>
+      <li><a href="chicken_add.html">Add Chicken</a></li>
+      <li><a href="chicken_list.html">Chicken List</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Add a Boneless Chicken</h1>
+    <p id="auth-info">Checking login status...</p>
+  </main>
+
+  <!-- Add Chicken Section -->
+  <section id="create">
+    <h2>Chicken Information</h2>
+    <p>Only logged-in users can add new chicken cards.</p>
+
+    <section class="grid" aria-label="recipes">
+      <article class="card">
+        <section class="body">
+          <form id="chicken-form">
+            <p>
+              <label>Name<br>
+                <input type="text" name="name" placeholder="e.g. Honey Combo Boneless" required />
+              </label>
+            </p>
+            <p>
+              <label>Brand<br>
+                <input type="text" name="brand" placeholder="e.g. BHC, Kyochon" />
+              </label>
+            </p>
+            <p>
+              <label>Style<br>
+                <select name="style">
+                  <option value="">None</option>
+                  <option value="Fried">Fried</option>
+                  <option value="Yangnyeom">Yangnyeom</option>
+                  <option value="Soy Sauce">Soy Sauce</option>
+                  <option value="Cheese">Cheese</option>
+                  <option value="Mala">Mala</option>
+                </select>
+              </label>
+            </p>
+
+            <div class="recipe-content">
+              <aside class="ingredients">
+                <h4>Flavor Levels (0–5)</h4>
+                <label>Spicy<br>
+                  <input type="number" name="spicy" min="0" max="5" value="0" />
+                </label><br>
+                <label>Sweet<br>
+                  <input type="number" name="sweet" min="0" max="5" value="0" />
+                </label><br>
+                <label>Crispy<br>
+                  <input type="number" name="crisp" min="0" max="5" value="0" />
+                </label>
+              </aside>
+
+              <section class="steps">
+                <h4>Description & Image</h4>
+                <label>Comment<br>
+                  <textarea name="comment" rows="3" placeholder="Short comment about this chicken"></textarea>
+                </label><br>
+                <label>Image URL<br>
+                  <input type="url" name="image_url" placeholder="https://example.com/image.jpg" />
+                </label>
+              </section>
+            </div>
+
+            <p style="text-align:center;">
+              <button type="submit">Add Chicken</button>
+            </p>
+            <p id="chicken-message"></p>
+          </form>
+        </section>
+      </article>
+    </section>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Boneless Chicken Dex</p>
+  </footer>
+
+</body>
+</html>

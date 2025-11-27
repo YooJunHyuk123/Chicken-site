@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boneless Chicken Dex - Auth</title>
+  <link rel="stylesheet" href="../01_CSS/style.css" />
+  <script src="auth.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="auth.html">Auth</a></li>
+      <li><a href="dex.html">Chicken Dex</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home / Intro -->
+  <main id="home">
+    <h1>Boneless Chicken Dex</h1>
+    <p>
+      Create an account and log in to start your own
+      <span class="highlight">boneless chicken</span> collection.
+    </p>
+
+    <section class="city-cards">
+      <article class="city-card">
+        <h3>Step 1</h3>
+        <p>Sign up with your email and nickname.</p>
+      </article>
+      <article class="city-card">
+        <h3>Step 2</h3>
+        <p>Log in to access the Chicken Dex page.</p>
+      </article>
+      <article class="city-card">
+        <h3>Step 3</h3>
+        <p>On the Chicken Dex page, add and view chicken cards.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Auth Section -->
+  <section id="auth">
+    <h2>Sign Up & Login</h2>
+    <p id="auth-status">Checking login status...</p>
+
+    <div class="city-cards">
+      <!-- Sign Up Card -->
+      <article class="city-card">
+        <h3>Sign Up</h3>
+        <form id="signup-form" method="post">
+          <p>
+            <label>Email<br>
+              <input type="email" name="email" required />
+            </label>
+          </p>
+          <p>
+            <label>Nickname<br>
+              <input type="text" name="nickname" required />
+            </label>
+          </p>
+          <p>
+            <label>Password<br>
+              <input type="password" name="password" required />
+            </label>
+          </p>
+          <button type="submit">Create Account</button>
+          <p id="signup-message"></p>
+        </form>
+      </article>
+
+      <!-- Login Card -->
+      <article class="city-card">
+        <h3>Login</h3>
+        <form id="login-form">
+          <p>
+            <label>Email<br>
+              <input type="email" name="email" required />
+            </label>
+          </p>
+          <p>
+            <label>Password<br>
+              <input type="password" name="password" required />
+            </label>
+          </p>
+          <button type="submit">Login</button>
+          <p id="login-message"></p>
+        </form>
+
+        <button id="logout-btn" style="display:none; margin-top:1em;">Logout</button>
+        <p id="logout-message"></p>
+
+        <p style="margin-top:1em;">
+          After logging in, go to
+          <a href="dex.html">Chicken Dex</a>.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Boneless Chicken Dex</p>
+  </footer>
+
+</body>
+</html>

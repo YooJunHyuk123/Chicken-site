@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boneless Chicken Dex - Chicken List</title>
+  <link rel="stylesheet" href="../01_CSS/style.css" />
+  <script src="chicken_list.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="auth.html">Auth</a></li>
+      <li><a href="chicken_add.html">Add Chicken</a></li>
+      <li><a href="chicken_list.html">Chicken List</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Chicken List</h1>
+    <p id="auth-info">Checking login status...</p>
+  </main>
+
+  <!-- Search / Filter Section -->
+  <section id="search">
+    <h2>Search Chickens</h2>
+    <p>Search by name, brand, style, or owner.</p>
+
+    <form id="search-form" style="text-align:center;">
+      <label>
+        Keyword<br>
+        <input type="text" name="keyword" placeholder="Name, brand, owner, comment..." />
+      </label>
+      <br><br>
+      <label>
+        Style<br>
+        <select name="style">
+          <option value="">All</option>
+          <option value="Fried">Fried</option>
+          <option value="Yangnyeom">Yangnyeom</option>
+          <option value="Soy Sauce">Soy Sauce</option>
+          <option value="Cheese">Cheese</option>
+          <option value="Mala">Mala</option>
+        </select>
+      </label>
+      <br><br>
+      <button type="submit">Search</button>
+      <button type="button" id="reset-btn">Reset</button>
+    </form>
+  </section>
+
+  <!-- Chicken List Section -->
+  <section id="list">
+    <h2>All Chickens</h2>
+    <p>Newest chicken cards from all users.</p>
+
+    <section id="chicken-list" class="grid" aria-label="recipes">
+      <!-- Cards will be inserted by chicken_list.js -->
+    </section>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Boneless Chicken Dex</p>
+  </footer>
+
+</body>
+</html>
