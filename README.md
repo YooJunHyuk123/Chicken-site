@@ -1,46 +1,68 @@
 # Chicken Site
-This project is building chicken web server project. This project implemented in HTML, CSS, JavaScript, and Python using the Amazon Web Services (AWS).
+This project is project that building chicken web server. This project utilizes HTML, CSS, JavaScript, Amazon Web Services(AWS), and Python Django.
 
-## Feature // 수정할 것
-- Feature1
-- Feature2
-- Feature3
+## Feature
+- Provides user registration, login, and logout functionality.
+- Logged-in users can register, edit, and delete chicken item, including: image URL, brand, style(fried, spicy, soy sauce, mala, cheese), name, spiciness level, sweetness level, crispiness level, and a short description.
+- Both logged-in and non-logged-in users can search and view all registered chicken items.
 
 ## Project Structure
 ```
-Chicken-site/
-├── README.md
-├── LICENSE
-├── 00_frontend/ # This directory is frontend source code directory
-│ ├── 00_HTML       # This directory is HTML source code directory
-│ │ ├── a.html
-│ │ ├── b.html
-│ │ └── c.html
-│ ├── 01_CSS        # This directory is CSS source code directory
+Chicken Site/
+├── 00_frontend/     # This directory is source code directory for frontend
+│ ├── 00_HTML/       # This directory is HTML source code directory
+│ │ ├── index.html   # This file is HTML source code file for chicken search and viewing
+│ │ ├── sign_up.html # This file is HTML source code file for user registration
+│ │ ├── login.html   # This file is HTML source code file for user login
+│ │ └── upload.html  # This file is HTML source code file for registering, editing and deleting chicken items
+│ ├── 01_CSS/        # This directory is CSS source code directory
 │ │ └── style.css
-│ └── 02_JS         # This directory is JavaScript source code directory
+│ └── 02_JS/         # This directory is JavaScript source code directory
 │   └── script.js
-└── 01_backend/  # This directory is backend source code directory
-  └── server.py
+├── 01_backend/      # This directory is backend source code directory
+│ ├── chicken_site_app/
+│ │ ├── admin.py
+│ │ ├── apps.py
+│ │ ├── models.py
+│ │ ├── views.py
+│ │ └── tests.py
+│ ├── chicken_site_project/
+│ │ ├── asgi.py
+│ │ ├── settings.py
+│ │ ├── urls.py
+│ │ └── wsgi.py
+│ └── manage.py
+├── Chicken Site Document
+├── LICENSE
+└── README.md
 ```
 
 ## Installation
-1. Clone the repository
+1. Install dependencies // 수정할 것
+	```
+	pip install []
+	```
+
+2. Clone the repository
 	```
 	gh repo clone YooJunHyuk123/Chicken-site
 	```
 
-2. Navigate to the project directory
+3. Navigate to the project directory
 	```
 	cd Chicken-site
 	```
 
-## Usage // 수정할 것
+## Usage
+1. Search for or view chicken items
+2. Sign up or log in
+3. Register, edit, or delete chicken items
 
-## Test //수정할 것
-- Test Case1
-- Test Case2
-- Test Case3
+## Test
+We tested the non-functional requirements described in the document
+- Tested whether the UI and UX functions correctly
+- Tested the server's response speed and scalability
+- Tested data protection and access control
 
 ## Contributing
 1. Create a new branch.
