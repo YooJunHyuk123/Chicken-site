@@ -40,7 +40,11 @@ Chicken Site/
 ## Installation
 1. Install dependencies // 수정할 것
 	```
-	pip install []
+	sudo dnf update -y
+	sudo dnf install git -y
+	sudo dnf install -y python3 python3-pip
+	pip install --upgrade pip
+	pip install django
 	```
 
 2. Clone the repository
@@ -50,7 +54,13 @@ Chicken Site/
 
 3. Navigate to the project directory
 	```
-	cd Chicken-site
+	cd Chicken-site/01_backend/chicken_site_project
+	```
+4. Make migrations, migrate, and run server
+	```
+	python3 manage.py makemigrations
+	python3 manage.py migrate
+	python3 manage.py runserver [option]
 	```
 
 ## Usage
