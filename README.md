@@ -86,7 +86,7 @@ We tested the non-functional requirements described in the document
 ## License
 This project is licensed under the MIT License.
 
-## Authors
+## Authors // 수정할 것
 - Yoo, J. H. ([Yoo, J. H.](https://github.com/YooJunHyuk123))
 Email: a01091040305@gmail.com
 
