@@ -1,22 +1,22 @@
-"""
-URL configuration for chicken_site_project project.
+# urls.py
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
+from chicken_site_app import views
 
+# URL patterns
 urlpatterns = [
+    # Admin
     path('admin/', admin.site.urls),
+
+    # User
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
+
+    # Chicken
+    path('chicken/list/', views.chicken_list, name='chicken_list'),
+    path('chicken/create/', views.chicken_create, name='chicken_create'),
+    path('chicken/update/<int:chicken_id>/', views.chicken_update, name='chicken_update'),
+    path('chicken/delete/<int:chicken_id>/', views.chicken_delete, name='chicken_delete'),
 ]
