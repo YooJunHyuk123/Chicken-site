@@ -1,5 +1,3 @@
-# urls.py
-
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -19,6 +17,9 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+
+    # Check login status
+    path('user/status/', views.user_status, name='user_status'),
 
     path('chicken/list/', views.chicken_list, name='chicken_list'),
     path('chicken/create/', views.chicken_create, name='chicken_create'),

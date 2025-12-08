@@ -1,30 +1,23 @@
-# views.py
-
 from django.contrib.auth import authenticate, get_user_model, login as auth_login, logout as auth_logout
 from django.http import JsonResponse
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from .models import Chicken
 
-# User
 User = get_user_model()
 
-# JSON response function
-def _json(success, data = None, error = None, status = 200):
-    response = {'success': success,}
+def _json(success, data=None, error=None, status=200):
+    response = {'success': success}
     if success and data is not None:
         response['data'] = data
     if not success and error is not None:
         response['error'] = error
     return JsonResponse(response, status=status)
 
-# Check log in is required or not function
 def _require_login(request):
     if not request.user.is_authenticated:
-        return _json(False, error = '로그인이 필요해요', status = 401)
+        return _json(False, error='로그인이 필요해요', status=401)
     return None
 
-# View chicken
 def chicken_list(request):
     chickens = Chicken.objects.all().order_by('-id')
     data = [
@@ -33,82 +26,63 @@ def chicken_list(request):
     ]
     return _json(True, data=data)
 
-# Sign up
 @csrf_exempt
 def signup(request):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # Contents
     username = request.POST.get('username')
     password1 = request.POST.get('password1')
     password2 = request.POST.get('password2')
 
-    # If username or password1 or password2 is emputee
     if not username or not password1 or not password2:
-        return _json(False, error = '아이디와 비밀번호를 모두 입력해주세요', status = 400)
-
-    # If user is exists
-    elif User.objects.filter(username = username).exists():
-        return _json(False, error = '아이디가 이미 존재해요', status = 400)
-
-    # If password1 and password2 is different
+        return _json(False, error='아이디와 비밀번호를 모두 입력해주세요', status=400)
+    elif User.objects.filter(username=username).exists():
+        return _json(False, error='아이디가 이미 존재해요', status=400)
     elif password1 != password2:
-        return _json(False, error = '비밀번호가 일치하지 않아요', status = 400)
+        return _json(False, error='비밀번호가 일치하지 않아요', status=400)
 
-    # If sign up is success
-    user = User.objects.create_user(username = username, password = password1)
-    return _json(True, data = {'message': '회원 가입에 성공했어요'})
+    user = User.objects.create_user(username=username, password=password1)
+    return _json(True, data={'message': '회원 가입에 성공했어요'})
 
-# Log in
 @csrf_exempt
 def login(request):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # Contents
     username = request.POST.get('username')
     password = request.POST.get('password')
 
-    # If username or password is emputee
     if not username or not password:
-        return _json(False, error = '아이디와 비밀번호를 모두 입력해주세요', status = 400)
+        return _json(False, error='아이디와 비밀번호를 모두 입력해주세요', status=400)
 
-    # If username or password is wrong
-    user = authenticate(request, username = username, password = password)
+    user = authenticate(request, username=username, password=password)
     if user is None:
-        return _json(False, error = '아이디 또는 비밀번호가 일치하지 않아요', status = 400)
+        return _json(False, error='아이디 또는 비밀번호가 일치하지 않아요', status=400)
 
-    # If log in is success
     auth_login(request, user)
-    return _json(True, data = {'message': '로그인에 성공했어요'})
+    return _json(True, data={'message': '로그인에 성공했어요'})
 
-# Log out
 @csrf_exempt
 def logout(request):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # If log out is success
     auth_logout(request)
-    return _json(True, data = {'message': '로그아웃에 성공했어요'})
+    return _json(True, data={'message': '로그아웃에 성공했어요'})
 
-# Create chicken
+def user_status(request):
+    return _json(True, data={'is_authenticated': request.user.is_authenticated})
+
 @csrf_exempt
 def chicken_create(request):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # Check log in
     need_login = _require_login(request)
     if need_login:
         return need_login
 
-    # Contents
     image_url = request.POST.get('image_url')
     brand = request.POST.get('brand')
     style = request.POST.get('style')
@@ -118,58 +92,46 @@ def chicken_create(request):
     crispiness = request.POST.get('crispiness')
     description = request.POST.get('description')
 
-    # If contents are emputee
     if not all([image_url, brand, style, name, spiciness, sweetness, crispiness, description]):
-        return _json(False, error = '모든 내용을 입력해주세요', status = 400)
+        return _json(False, error='모든 내용을 입력해주세요', status=400)
 
-    # If create chicken is success
-    chicken = Chicken.objects.create(user = request.user, image_url = image_url, brand = brand, style = style, name = name, spiciness = spiciness, sweetness = sweetness, crispiness = crispiness, description = description)
+    chicken = Chicken.objects.create(user=request.user, image_url=image_url, brand=brand, style=style, name=name, spiciness=spiciness, sweetness=sweetness, crispiness=crispiness, description=description)
     return _json(True, data={'message': '치킨 등록에 성공했어요', 'id': chicken.id})
 
-# Update chicken
 @csrf_exempt
 def chicken_update(request, chicken_id):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # Check log in
     need_login = _require_login(request)
     if need_login:
         return need_login
 
-    # Check chicken is exists
     try:
-        chicken = Chicken.objects.get(id = chicken_id, user = request.user)
+        chicken = Chicken.objects.get(id=chicken_id, user=request.user)
     except Chicken.DoesNotExist:
-        return _json(False, error = '치킨이 존재하지 않거나 수정 권한이 없어요', status = 404)
+        return _json(False, error='치킨이 존재하지 않거나 수정 권한이 없어요', status=404)
 
-    # If update chicken is success
     for field in ['image_url', 'brand', 'style', 'name', 'spiciness', 'sweetness', 'crispiness', 'description']:
         value = request.POST.get(field)
         if value is not None:
             setattr(chicken, field, value)
     chicken.save()
-    return _json(True, data = {'message': '치킨 수정에 성공했어요'})
+    return _json(True, data={'message': '치킨 수정에 성공했어요'})
 
-# Delete chicken
 @csrf_exempt
 def chicken_delete(request, chicken_id):
-    # If request is not POST
     if request.method != 'POST':
-        return _json(False, error = 'POST 요청만 가능해요', status = 405)
+        return _json(False, error='POST 요청만 가능해요', status=405)
 
-    # Check log in
     need_login = _require_login(request)
     if need_login:
         return need_login
 
-    # Check chicken is exists
     try:
-        chicken = Chicken.objects.get(id = chicken_id, user = request.user)
+        chicken = Chicken.objects.get(id=chicken_id, user=request.user)
     except Chicken.DoesNotExist:
-        return _json(False, error = '치킨이 존재하지 않거나 삭제 권한이 없어요', status = 404)
+        return _json(False, error='치킨이 존재하지 않거나 삭제 권한이 없어요', status=404)
 
-    # If delete chicken is success
     chicken.delete()
-    return _json(True, data = {'message': '치킨 삭제에 성공했어요'})
+    return _json(True, data={'message': '치킨 삭제에 성공했어요'})
