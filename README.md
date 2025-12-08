@@ -91,4 +91,4 @@ This project is licensed under the MIT License.
 Email: a01091040305@gmail.com
 
 - Kim, K. Y. ([Kim, K. Y.](https://githube.com/euden112))
-Email: ___@gmail.com
+Email: kky031120@gmail.com
