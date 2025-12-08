@@ -38,7 +38,7 @@ Chicken Site/
 ```
 
 ## Installation
-1. Install dependencies // 수정할 것
+1. Install dependencies
 	```
 	sudo dnf update -y
 	sudo dnf install git -y
@@ -96,7 +96,7 @@ We tested the non-functional requirements described in the document
 ## License
 This project is licensed under the MIT License.
 
-## Authors // 수정할 것
+## Authors
 - Yoo, J. H. ([Yoo, J. H.](https://github.com/YooJunHyuk123))
 Email: a01091040305@gmail.com
 
