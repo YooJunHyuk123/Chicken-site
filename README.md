@@ -9,17 +9,17 @@ This project is project that building chicken web server. This project utilizes 
 ## Project Structure
 ```
 Chicken Site/
-├── 00_frontend/     # This directory is source code directory for frontend
-│ ├── 00_HTML/       # This directory is HTML source code directory
-│ │ ├── index.html   # This file is HTML source code file for chicken search and viewing
-│ │ ├── sign_up.html # This file is HTML source code file for user registration
-│ │ ├── login.html   # This file is HTML source code file for user login
-│ │ └── upload.html  # This file is HTML source code file for registering, editing and deleting chicken items
-│ ├── 01_CSS/        # This directory is CSS source code directory
+├── 00_frontend/                    # This directory is source code directory for frontend
+│ ├── 00_HTML/                      # This directory is HTML source code directory
+│ │ ├── index.html                  # This file is HTML source code file for chicken search and viewing
+│ │ ├── sign_up.html                # This file is HTML source code file for user registration
+│ │ ├── login.html                  # This file is HTML source code file for user login
+│ │ └── upload.html                 # This file is HTML source code file for registering, editing and deleting chicken items
+│ ├── 01_CSS/                       # This directory is CSS source code directory
 │ │ └── style.css
-│ └── 02_JS/         # This directory is JavaScript source code directory
+│ └── 02_JS/                        # This directory is JavaScript source code directory
 │   └── script.js
-├── 01_backend/      # This directory is backend source code directory
+├── 01_backend/chicken_site_project # This directory is backend source code directory
 │ ├── chicken_site_app/
 │ │ ├── admin.py
 │ │ ├── apps.py
