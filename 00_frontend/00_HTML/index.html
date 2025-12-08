@@ -1,0 +1,39 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>치킨 목록</title>
+    <link rel="stylesheet" href="../01_CSS/style.css" />
+</head>
+
+<body>
+    <h1>치킨 목록</h1>
+
+    <div id="user-section">
+        <button onclick="location.href='login.html'">로그인</button>
+        <button onclick="location.href='sign_up.html'">회원 가입</button>
+        <button onclick="logout()">로그아웃</button>
+    </div>
+
+    <hr>
+
+    <h2>치킨 검색</h2>
+
+    <input type="text" id="searchInput" placeholder="치킨 이름 검색" />
+
+    <button onclick="searchChicken()">검색</button>
+
+    <hr>
+
+    <h2>전체 치킨 목록</h2>
+
+    <div id="chicken-list"></div>
+
+    <script src="../02_JS/script.js"></script>
+</body>
+
+</html>
